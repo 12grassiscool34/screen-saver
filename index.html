@@ -64,6 +64,11 @@
             const timeString = `${hours.toString().padStart(2, '0')}:${minutes} <span class="ampm">${ampm}</span>`;
 
             document.getElementById('clock').innerHTML = timeString;
+            
+            if (minutes !== document.body.getAttribute('data-minute')) {
+                document.body.setAttribute('data-minute', minutes);
+                moveClock();
+            }
         }
 
         function toggleFullscreen() {
@@ -115,7 +120,6 @@
         });
 
         setInterval(updateClock, 1000);
-        setInterval(moveClock, 30000);
         updateClock();
     </script>
 </body>
